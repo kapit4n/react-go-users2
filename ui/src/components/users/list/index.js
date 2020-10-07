@@ -2,9 +2,18 @@ import React from 'react';
 
 export default function Index({ users }) {
   return (<table>
-    <tr><td>Name</td></tr>
-    {users.map(u => {
-      return (<tr key={u.id}>{u.name}</tr>)
-    })}
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {users.map(u => {
+        return (
+          <tr key={u.id}>
+            <td>{u.name}</td>
+          </tr>)
+      })}
+    </tbody>
   </table>)
 }

@@ -19,9 +19,11 @@ function App() {
             <li>
               <Link to="/">Home</Link>
             </li>
-
             <li>
               <Link to="/fizzbuzz">Go to Fizz Buzz</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
             </li>
 
           </ul>
@@ -30,6 +32,9 @@ function App() {
 
           <Route path="/fizzbuzz">
             <FizzBuzzView />
+          </Route>
+          <Route path="/users">
+            <UsersView />
           </Route>
           <Route path=""></Route>
         </Switch>
