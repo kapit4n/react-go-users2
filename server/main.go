@@ -18,6 +18,8 @@ func main() {
 	})
 
 	r.GET("/users", controllers.FindUsers)
+	r.GET("/fizzbuzz/:n", controllers.FixzBuzzBuilder)
+	r.GET("/users/:id", controllers.FindUser)
 	r.POST("/users", controllers.CreateUser)
 
 	r.Run()
