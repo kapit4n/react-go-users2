@@ -5,6 +5,7 @@ export default function Index({ users }) {
     <thead>
       <tr>
         <th>Name</th>
+        <th>Points</th>
       </tr>
     </thead>
     <tbody>
@@ -12,6 +13,7 @@ export default function Index({ users }) {
         return (
           <tr key={u.id}>
             <td>{u.name}</td>
+            <td>{u.points}</td>
           </tr>)
       })}
     </tbody>

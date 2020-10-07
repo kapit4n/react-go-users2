@@ -1,6 +1,7 @@
 import React from 'react';
 
 import UsersComponent from '../../../components/users/list'
+import UserCreateComponent from '../../../components/users/create'
 import axios from 'axios';
 
 export default function Index() {
@@ -20,5 +21,10 @@ export default function Index() {
     fetchData();
   }, [])
 
-  return <UsersComponent users={users} />
+  return (
+    <>
+      <UserCreateComponent />
+      <UsersComponent users={users} />
+    </>
+  )
 }
