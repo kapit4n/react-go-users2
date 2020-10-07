@@ -5,12 +5,11 @@ export default function FizzBuzzList({ n }) {
 
   const [fbArray, setFArray] = React.useState([]);
 
-
   React.useEffect(() => {
     async function fetchData(n) {
       try {
         if (n > 0) {
-          let result = await axios.get('http://localhost:8080/fizzbuzz/' + n);
+          let result = await axios.get(`${process.env.REACT_APP_API_URL}/fizzbuzz/${n}`);
           setFArray(result.data.data.map(element => {
             const parsed = parseInt(element, 10);
             if (isNaN(parsed)) {
