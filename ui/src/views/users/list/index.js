@@ -23,7 +23,7 @@ export default function Index() {
 
   return (
     <>
-      <UserCreateComponent />
+      <UserCreateComponent setUserList={setUsers} />
       <UsersComponent users={users} />
     </>
   )

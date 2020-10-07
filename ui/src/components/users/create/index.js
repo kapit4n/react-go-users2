@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
-export default function Index() {
+export default function Index({ setUserList }) {
 
   const [userName, setUserName] = React.useState("");
   const [points, setPoints] = React.useState(0);
   const onSubmit = async (e) => {
     e.preventDefault();
-    let response = await axios.post(`${process.env.REACT_APP_API_URL}/users`, { name: userName, points })
-    console.log(response);
+    let response = await axios.post(`${process.env.REACT_APP_API_URL}/users`, { name: userName, points: Number(points) })
+    console.log(response.data);
+    setUserList(x => [...x, response.data.data])
   }
 
   return (
