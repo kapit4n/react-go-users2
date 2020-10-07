@@ -1,6 +1,7 @@
 package models
 
 type User struct {
-	ID   uint   `json:"id" gorm:"primary_key"`
-	Name string `json:"name"`
+	ID     uint   `json:"id" gorm:"primary_key"`
+	Name   string `json:"name"`
+	Points int    `json:"points"`
 }
