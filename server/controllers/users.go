@@ -7,8 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type CreateUserInput struct {
-	Name   string `json: "name", binding:"required"`
+type UserInput struct {
+	Name   string `json: "name"`
 	Points int    `json: "points"`
 }
 
@@ -32,7 +32,7 @@ func FindUser(c *gin.Context) {
 }
 
 func CreateUser(c *gin.Context) {
-	var input CreateUserInput
+	var input UserInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -40,6 +40,28 @@ func CreateUser(c *gin.Context) {
 
 	user := models.User{Name: input.Name, Points: input.Points}
 	models.DB.Create(&user)
+
+	c.JSON(http.StatusOK, gin.H{"data": user})
+}
+
+func UpdateUser(c *gin.Context) {
+	var input UserInput
+	if err := c.ShouldBindJSON(&input); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	var user models.User
+
+	if err := models.DB.Where("id = ?", c.Param("id")).First(&user).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	user.Name = input.Name
+	user.Points = input.Points
+
+	models.DB.Save(&user)
 
 	c.JSON(http.StatusOK, gin.H{"data": user})
 }
