@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 
 import UsersView from './views/users/list'
-import FizzBuzzView from './views/fizz-buzz'
+import News from './views/news'
 
 function App() {
   return (
@@ -20,9 +20,6 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/fizzbuzz">Go to Fizz Buzz</Link>
-            </li>
-            <li>
               <Link to="/users">Users</Link>
             </li>
 
@@ -30,13 +27,10 @@ function App() {
         </nav>
         <Switch>
 
-          <Route path="/fizzbuzz">
-            <FizzBuzzView />
-          </Route>
           <Route path="/users">
             <UsersView />
           </Route>
-          <Route path=""></Route>
+          <Route path=""><News /></Route>
         </Switch>
       </div>
     </Router>
