@@ -32,8 +32,8 @@ type NewsInfo struct {
 }
 
 func FindNews(c *gin.Context) {
-	// search := c.Param("search")
-	resp, err := http.Get("http://newsapi.org/v2/everything?q=bitcoin&from=2020-09-09&sortBy=publishedAt&apiKey=77e82ace6f6c4dfaadf3836b68f14b4c")
+	search := c.Param("search")
+	resp, err := http.Get("http://newsapi.org/v2/everything?q=" + search + "&from=2020-09-09&sortBy=publishedAt&apiKey=77e82ace6f6c4dfaadf3836b68f14b4c")
 	if err != nil {
 		fmt.Printf("The request has errors")
 	} else {
