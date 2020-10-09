@@ -9,7 +9,7 @@ export default function Index() {
   React.useEffect(() => {
 
     async function load() {
-      const url = 'http://localhost:8080/news/query';
+      const url = 'http://localhost:8080/news/cars';
       const response = await axios.get(url);
       console.log(response);
       setNews(response.data.Articles);
